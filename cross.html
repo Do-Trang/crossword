@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Japanese New Year Crossword</title>
+
+<style>
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+td {
+  width: 34px;
+  height: 34px;
+  text-align: center;
+}
+
+.dark {
+  background: #333;
+}
+
+.cell {
+  border: 1px solid #222;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.highlight-row {
+  background-color: #d0ebff;
+}
+
+.highlight-down {
+  background-color: #ffe066;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Crossword</h2>
+
+<table>
+  <!-- おとしだま (7) -->
+  <tr class="across" data-answer="おとしだま">
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="cell down"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+  </tr>
+
+  <!-- しめなわ (4) -->
+  <tr class="across" data-answer="しめなわ">
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="cell down"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+  </tr>
+
+  <!-- しょうがつかざり (8) -->
+  <tr class="across" data-answer="しょうがつかざり">
+    <td class="dark"></td>
+    <td class="cell"></td>
+    <td class="cell down"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    
+  </tr>
+
+  <!-- おぞうに (4) -->
+  <tr class="across" data-answer="おぞうに">
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell down"></td>
+    <td class="cell"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+  </tr>
+
+  <!-- がんじつ (4) -->
+  <tr class="across" data-answer="がんじつ">
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="cell down"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+  </tr>
+
+  <!-- はつもうで (4) -->
+  <tr class="across" data-answer="はつもうで">
+    <td class="dark"></td>
+    <td class="cell"></td>
+    <td class="cell down"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="cell"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+    <td class="dark"></td>
+  </tr>
+</table>
+
+<h3>Across</h3>
+<div id="across-list">
+  <li>
+    <span class="question-number">1</span>
+    <span class="question-text" style="display:none;">
+      お正月に、子どもがもらうお金。
+    </span>
+  </li>
+  <li>
+    <span class="question-number">2</span>
+    <span class="question-text" style="display:none;">
+      お正月に、家の玄関などに飾る縄（なわ）。
+    </span>
+  </li>
+  <li>
+    <span class="question-number">3</span>
+    <span class="question-text" style="display:none;">
+      お正月に家の前などに飾って、年神様（としがみさま）を迎える飾り。
+    </span>
+  </li>
+  <li>
+    <span class="question-number">4</span>
+    <span class="question-text" style="display:none;">
+      おもちが入った、お正月のスープ。
+    </span>
+  </li>
+  <li>
+    <span class="question-number">5</span>
+    <span class="question-text" style="display:none;">
+      1月1日のこと（お正月の初日）。
+    </span>
+  </li>
+  <li>
+    <span class="question-number">6</span>
+    <span class="question-text" style="display:none;">
+      新年に初めて神社やお寺へお参りに行くこと。
+    </span>
+  </li>
+</div>
+
+<h3>Down</h3>
+<!-- <p>お・し・ょ・う・が・つ（お正月）</p> -->
+
+<script>
+    const rows = document.querySelectorAll(".across");
+    const downCells = document.querySelectorAll(".down");
+    
+    rows.forEach(row => {
+      row.addEventListener("click", () => {
+            const answer = row.dataset.answer;
+        const cells = row.querySelectorAll(".cell");
+    
+        cells.forEach((cell, i) => {
+          if (answer[i] && cell.textContent === "") {
+            cell.textContent = answer[i];
+            cell.classList.add("highlight-row");
+          }
+        });
+    
+        downCells.forEach(cell => {
+          cell.classList.add("highlight-down");
+        });
+      });
+    });
+
+    const acrossItems = document.querySelectorAll("#across-list li");
+
+acrossItems.forEach(item => {
+  const number = item.querySelector(".question-number");
+  const text = item.querySelector(".question-text");
+
+  number.addEventListener("click", () => {
+    if (text.style.display === "none") {
+      text.style.display = "inline"; 
+    } else {
+      text.style.display = "none"; 
+    }
+  });
+});
+    </script>
+    
+
+</body>
+</html>
